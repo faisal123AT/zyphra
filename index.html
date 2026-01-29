@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyphra - Your Digital Sky</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(to bottom, #60a5fa, #93c5fd, #bfdbfe);
+      --cloud-color: rgba(255, 255, 255, 0.95);
+      --text-color: #1e3a8a;
+      --accent-glow: rgba(59, 130, 246, 0.5);
+    }
+
+    [data-theme="dark"] {
+      --bg-gradient: linear-gradient(to bottom, #0f172a, #312e81, #1e1b4b);
+      --cloud-color: rgba(226, 232, 240, 0.9);
+      --text-color: #f1f5f9;
+      --accent-glow: rgba(139, 92, 246, 0.5);
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      overflow: hidden;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      transition: background 1s ease, color 1s ease;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle-anim 1.5s ease-out forwards;
+    }
+
+    @keyframes sparkle-anim {
+      0% { transform: scale(0) rotate(0deg); opacity: 1; }
+      100% { transform: scale(1.5) rotate(180deg) translate(var(--tx), var(--ty)); opacity: 0; }
+    }
+
+    .rain-drop {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.4);
+      width: 1px;
+      height: 15px;
+      pointer-events: none;
+      animation: rain-fall 1s linear infinite;
+    }
+
+    @keyframes rain-fall {
+      to { transform: translateY(100vh); }
+    }
+
+    @keyframes milestone-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.3), 0 0 5px rgba(255, 215, 0, 0.1); }
+      50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 10px rgba(255, 215, 0, 0.3); }
+    }
+
+    .milestone-day {
+      animation: milestone-glow 3s infinite ease-in-out;
+      border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@^1.9.3"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-blue-400">
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
